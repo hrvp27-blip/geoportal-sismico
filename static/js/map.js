@@ -471,9 +471,9 @@ function initVis() {
 
     appState.canvasRenderer = L.canvas({ padding: 0.5, pane: 'earthquakesPane' });
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '&copy; OSM & CARTO'
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(appState.map);
 
     L.control.scale({ imperial: false, position: 'bottomleft' }).addTo(appState.map);
