@@ -1,0 +1,278 @@
+/* ===============================================
+   3. SIDEBAR FLOTANTE (DERECHA)
+   =============================================== */
+#sidebar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: min(720px, 54vw);
+    max-width: 90vw;
+    min-width: 360px;
+    height: calc(100vh - 40px);
+    z-index: 1000;
+    background: var(--sb-bg);
+    display: flex;
+    flex-direction: column;
+    border-radius: 14px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18), 0 0 0 1px var(--sb-border);
+    overflow: hidden;
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.32s ease,
+                opacity 0.32s ease;
+    resize: horizontal;
+}
+
+#sidebar-resize-handle {
+    position: absolute;
+    top: 0;
+    left: -8px;
+    width: 16px;
+    height: 100%;
+    cursor: ew-resize;
+    z-index: 1001;
+    background: transparent;
+}
+
+#sidebar-resize-handle:hover {
+    background: var(--sb-hover-overlay);
+}
+
+#sidebar.is-dragging {
+    cursor: grabbing;
+}
+
+.sidebar-header {
+    background: var(--sb-header);
+    color: var(--sb-header-text);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    cursor: grab;
+    border-bottom: 1px solid var(--sb-border);
+    flex-shrink: 0;
+}
+
+.sidebar-header > div:first-child {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 1.02rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: -0.01em;
+    color: var(--sb-header-text);
+}
+
+.header-subtitle {
+    margin-top: 3px;
+    font-size: 0.74rem;
+    color: var(--sb-muted);
+}
+
+.panel-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex: 0 0 auto;
+}
+
+.drag-handle-icon {
+    opacity: 0.3;
+    flex-shrink: 0;
+    color: var(--sb-muted);
+}
+
+/* ── Selector de idioma ───────────────────────────────────────────────── */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lang-flag-btn {
+    background: none;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 2px;
+    cursor: pointer;
+    line-height: 0;
+    opacity: 0.4;
+    transition: opacity 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+    flex-shrink: 0;
+}
+
+.lang-flag-btn .fi {
+    display: block;
+    width: 22px;
+    height: 22px;
+    border-radius: 3px;
+}
+
+.lang-flag-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.08);
+}
+
+.lang-flag-btn.lang-flag-active {
+    opacity: 1;
+    border-color: var(--sb-lang-border);
+    transform: scale(1.1);
+}
+
+/* ── Selector de tema ─────────────────────────────────────────────────── */
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: var(--sb-inset-bg);
+    border: 1px solid var(--sb-border);
+    border-radius: 8px;
+    padding: 2px;
+    flex-shrink: 0;
+}
+
+.theme-btn {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: var(--sb-muted);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.15s ease, color 0.15s ease;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.theme-btn:hover {
+    background: var(--sb-hover-overlay);
+    color: var(--sb-text);
+}
+
+.theme-btn.active {
+    background: var(--sb-accent);
+    color: #ffffff;
+}
+
+/* ── Status bar ───────────────────────────────────────────────────────── */
+#statusMessage {
+    font-size: 0.79rem;
+    padding: 8px 15px;
+    background: var(--sb-status-bg);
+    color: var(--sb-status-text);
+    text-align: center;
+    border-bottom: 1px solid var(--sb-status-border);
+    flex-shrink: 0;
+}
+
+/* ── Pestañas ─────────────────────────────────────────────────────────── */
+#tabs {
+    display: flex;
+    background: var(--sb-tabs);
+    border-bottom: 1px solid var(--sb-border);
+    flex-shrink: 0;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 11px 15px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: 500;
+    color: var(--sb-muted);
+    border-bottom: 2px solid transparent;
+    transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    font-size: 0.84rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+.tab-button:hover {
+    background: var(--sb-hover-overlay);
+    color: var(--sb-text);
+}
+
+.tab-button.active {
+    border-bottom: 2px solid var(--sb-accent);
+    color: var(--sb-accent);
+    background: rgba(59, 130, 246, 0.07);
+}
+
+/* ── Shortcut bar ─────────────────────────────────────────────────────── */
+.sidebar-widget-shortcuts {
+    display: flex;
+    gap: 6px;
+    padding: 8px 14px;
+    background: var(--sb-header);
+    border-bottom: 1px solid var(--sb-border);
+    flex-shrink: 0;
+}
+
+.widget-shortcut-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 7px 10px;
+    background: var(--sb-card);
+    border: 1px solid var(--sb-border);
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--sb-muted);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.widget-shortcut-btn i {
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    color: var(--sb-accent);
+}
+
+.widget-shortcut-btn:hover {
+    background: var(--sb-border);
+    color: var(--sb-text);
+    border-color: var(--sb-muted);
+}
+
+/* ── Contenido de pestañas ────────────────────────────────────────────── */
+#tab-controls {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 16px;
+    background: var(--sb-bg);
+}
+
+#tab-controls::-webkit-scrollbar {
+    width: 5px;
+}
+
+#tab-controls::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#tab-controls::-webkit-scrollbar-thumb {
+    background: var(--sb-border);
+    border-radius: 3px;
+}

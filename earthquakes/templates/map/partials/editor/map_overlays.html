@@ -1,0 +1,31 @@
+{% load static %}
+<div id="mapsContainer">
+    <!-- badges ocultos: siguen actualizados por JS pero no visibles -->
+    <span id="eventsCountBadge" style="display:none"></span>
+    <span id="zoneCountBadge" style="display:none"></span>
+    <span id="filterSummaryBadge" style="display:none"></span>
+
+    <div class="map-hint-card" id="mapHintCard" role="status" aria-live="polite">
+        <div class="hint-card-content">
+            <i class="fas fa-hand-pointer"></i>
+            <span data-i18n="mapHintText">Seleccione una zona haciendo clic en el mapa o desde el selector rápido del panel.</span>
+        </div>
+    </div>
+
+    <div id="map1"></div>
+
+    <div id="completeness-floating-table" class="floating-panel">
+        <div class="table-header">
+            <span><i class="fas fa-tasks" style="margin-right:6px;opacity:0.85"></i><span data-i18n="completenessPanelTitle">Completitud</span></span>
+            <button onclick="closeCompleteness()" class="comp-close-btn" title="Cerrar">&times;</button>
+        </div>
+        <div id="completeness-body" class="panel-content">
+            <p class="empty-msg" data-i18n="completenessEmptyMsg">Sin datos cargados</p>
+        </div>
+    </div>
+
+<button id="sidebar-reopen-tab" data-i18n-title="panelExpand" title="Abrir panel" aria-label="Abrir panel lateral">
+        <i class="fas fa-globe-americas"></i>
+        <i class="fas fa-angle-left"></i>
+    </button>
+</div>

@@ -1,0 +1,42 @@
+<section id="metodologia" class="section section-white" aria-labelledby="method-heading">
+    <div class="site-container">
+
+        <div class="section-head">
+            <h2 id="method-heading" data-i18n="methodologyTitle">Metodología</h2>
+            <p class="section-lead" data-i18n="methodologyLead">
+                La plataforma estima modelos de recurrencia sísmica mediante la relación de Gutenberg-Richter utilizando los métodos de mínimos cuadrados y máxima verosimilitud. El cálculo se realiza considerando los períodos de completitud definidos por el usuario para cada rango de magnitudes.
+            </p>
+        </div>
+
+        <div class="method-grid">
+
+            <div class="method-block">
+                <span class="method-tag">G-R</span>
+                <h3 data-i18n="methodGRTitle">Ley de Gutenberg-Richter</h3>
+                <p class="method-formula">log<sub>10</sub>(N) = a &minus; b * M</p>
+                <p data-i18n="methodGRDesc">
+                    Relación empírica que describe la distribución frecuencia-magnitud de los sismos. <em>N(≥M)</em> es el número acumulado de eventos con magnitud mayor o igual a <em>M</em>. Los parámetros <em>a</em> (nivel de sismicidad) y <em>b</em> (relación sismos grandes/pequeños) caracterizan la región analizada.
+                </p>
+                <p class="method-ref">Gutenberg &amp; Richter (1944), <em>Bull. Seismol. Soc. Am.</em> 34, 185–188</p>
+            </div>
+
+            <div class="method-block">
+                <span class="method-tag">OLS</span>
+                <h3 data-i18n="methodOLSTitle">Regresión por Mínimos Cuadrados</h3>
+                <p data-i18n="methodOLSDesc">
+                    Ajuste lineal ordinario de log<sub>10</sub>(N) frente a M sobre los puntos de frecuencia acumulada. Proporciona estimaciones de <em>a</em> y <em>b</em> con coeficiente de determinación R<sup>2</sup>. Los puntos con N=1 se excluyen para reducir el sesgo en la cola de alta magnitud.
+                </p>
+            </div>
+
+            <div class="method-block">
+                <span class="method-tag">MLE</span>
+                <h3 data-i18n="methodMLETitle">Estimador de Máxima Verosimilitud</h3>
+                <p data-i18n="methodMLEDesc">
+                    Estimador de Aki (1965) y Utsu (1965) para distribuciones exponenciales truncadas en M<sub>c</sub>. Estadísticamente óptimo: insesgado y de mínima varianza cuando el catálogo es completo por encima de M<sub>c</sub>. El parámetro <em>a</em> se normaliza en M<sub>c</sub>.
+                </p>
+                <p class="method-ref">Aki (1965), <em>J. Phys. Earth</em> 13, 1–11 / Utsu (1965), <em>Geophys. Mag.</em> 30, 521–526</p>
+            </div>
+
+        </div>
+    </div>
+</section>

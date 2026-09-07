@@ -1,0 +1,140 @@
+{% load static %}
+<script>
+    function openTab(evt, tabName) {
+        let tabcontent = document.getElementsByClassName("tab-content");
+        for (let t of tabcontent) t.classList.remove('active');
+        let tablinks = document.getElementsByClassName("tab-button");
+        for (let l of tablinks) l.classList.remove('active');
+        const tabEl = document.getElementById(tabName);
+        if (tabEl) {
+            tabEl.classList.add('active');
+            const container = document.getElementById('tab-controls');
+            if (container) {
+                container.scrollTo({ top: tabEl.offsetTop - container.offsetTop, behavior: 'smooth' });
+            }
+        }
+        evt.currentTarget.classList.add('active');
+    }
+
+    function closeCompleteness() {
+        document.getElementById('completeness-floating-table')?.classList.remove('is-open');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.getElementById('sidebar');
+        const handle = document.getElementById('drag-handle');
+        let isDragging = false, offsetX, offsetY;
+
+        handle.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            offsetX = e.clientX - sidebar.offsetLeft;
+            offsetY = e.clientY - sidebar.offsetTop;
+            sidebar.classList.add('is-dragging');
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            sidebar.style.left = (e.clientX - offsetX) + 'px';
+            sidebar.style.top = (e.clientY - offsetY) + 'px';
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            sidebar.classList.remove('is-dragging');
+        });
+
+        const showLogoCheckbox = document.getElementById('showLogoCheckbox');
+        showLogoCheckbox?.addEventListener('change', (e) => {
+            const logo = document.getElementById('geoportal-logo');
+            if (!logo) return;
+            logo.classList.toggle('is-hidden', !e.target.checked);
+        });
+    });
+</script>
+<script src="{% static 'js/language.js' %}"></script>
+<script src="{% static 'js/theme.js' %}"></script>
+<script src="{% static 'js/upload-zone.js' %}"></script>
+
+<script type="module" src="{% static 'js/map.js' %}"></script>
+<script>
+(function(){
+    try {
+        if (window.Chart && window['chartjsPluginZoom']) Chart.register(window['chartjsPluginZoom']);
+        if (window.Chart && window.Zoom) Chart.register(window.Zoom);
+        const wrap = document.getElementById('richterWrap');
+        const expandBtn = document.getElementById('expandChartBtn');
+
+        function setExpandIcon(isFullscreen) {
+            const icon = expandBtn?.querySelector('i');
+            if (!icon) return;
+            icon.className = isFullscreen ? 'fas fa-times' : 'fas fa-expand';
+        }
+
+        function enterFullscreen() {
+            if (!wrap) return;
+            wrap._origParent = wrap.parentNode;
+            wrap._nextSibling = wrap.nextSibling;
+
+            const backdrop = document.createElement('div');
+            backdrop.id = 'chart-fullscreen-backdrop';
+            backdrop.addEventListener('click', exitFullscreen);
+            document.body.appendChild(backdrop);
+
+            document.body.appendChild(wrap);
+            wrap.classList.add('fullscreen');
+            document.body.classList.add('chart-fullscreen-open');
+            setExpandIcon(true);
+            setTimeout(() => window.richterChartInstance?.resize(), 150);
+        }
+
+        function exitFullscreen() {
+            if (!wrap) return;
+            wrap.classList.remove('fullscreen');
+            document.body.classList.remove('chart-fullscreen-open');
+            if (wrap._origParent) wrap._origParent.insertBefore(wrap, wrap._nextSibling || null);
+            document.getElementById('chart-fullscreen-backdrop')?.remove();
+            setExpandIcon(false);
+            setTimeout(() => window.richterChartInstance?.resize(), 150);
+        }
+
+        expandBtn?.addEventListener('click', () => {
+            if (!wrap) return;
+            if (!wrap.classList.contains('fullscreen')) enterFullscreen();
+            else exitFullscreen();
+        });
+
+        document.addEventListener('keydown', (ev) => {
+            if (ev.key === 'Escape' && wrap && wrap.classList.contains('fullscreen')) exitFullscreen();
+        });
+    } catch (err) { console.warn('Zoom plugin init:', err); }
+})();
+</script>
+<script>
+['CargaFiltros', 'Analisis'].forEach(function(tabId) {
+    var container = document.getElementById(tabId);
+    if (!container) return;
+    var key = 'sidebar-order-' + tabId;
+    try {
+        var saved = JSON.parse(localStorage.getItem(key) || 'null');
+        if (Array.isArray(saved)) {
+            var sections = container.querySelectorAll('.control-section[data-section-id]');
+            var byId = {};
+            sections.forEach(function(el) { byId[el.dataset.sectionId] = el; });
+            saved.forEach(function(id) { if (byId[id]) container.appendChild(byId[id]); });
+        }
+    } catch(e) {}
+    Sortable.create(container, {
+        handle: '.section-header-inline',
+        animation: 180,
+        ghostClass: 'section-drag-ghost',
+        chosenClass: 'section-drag-chosen',
+        onEnd: function() {
+            var order = [];
+            container.querySelectorAll('.control-section[data-section-id]').forEach(function(el) {
+                order.push(el.dataset.sectionId);
+            });
+            localStorage.setItem(key, JSON.stringify(order));
+        }
+    });
+});
+</script>

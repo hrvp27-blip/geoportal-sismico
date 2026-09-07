@@ -1,0 +1,193 @@
+<div id="sidebar" class="collapsible-panel" data-collapse-direction="side">
+    <div id="sidebar-resize-handle" title="Arrastra para redimensionar el panel"></div>
+    <div class="sidebar-header" id="drag-handle">
+        <div>
+            <h2><i class="fas fa-globe-americas"></i> <span data-i18n="sidebarHeaderTitle">Geoportal de Fuente Sísmica</span></h2>
+            <div id="headerSubtitle" class="header-subtitle" data-i18n="sidebarSubtitle">Explora catálogos, selecciona zonas y ajusta filtros en tiempo real.</div>
+        </div>
+        <div class="panel-actions panel-actions-inline">
+            <div class="theme-switcher" id="themeSwitcher" title="Cambiar tema visual">
+                <button type="button" class="theme-btn" data-theme="light" title="Tema claro"><i class="fas fa-sun"></i></button>
+                <button type="button" class="theme-btn" data-theme="dark" title="Tema oscuro"><i class="fas fa-moon"></i></button>
+                <button type="button" class="theme-btn" data-theme="colorblind" title="Modo daltónico"><i class="fas fa-low-vision"></i></button>
+            </div>
+            <button type="button" class="panel-toggle-btn panel-toggle-side" data-panel-target="sidebar" aria-label="Plegar panel lateral">
+                <i class="fas fa-angle-left"></i>
+            </button>
+            <i class="fas fa-grip-lines drag-handle-icon"></i>
+        </div>
+    </div>
+    <div id="statusMessage" class="status-info" data-i18n="sidebarStatusInitial">Cargue un catálogo o una zona para comenzar el análisis interactivo.</div>
+
+    <div id="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'CargaFiltros')"><i class="fas fa-database"></i> <span data-i18n="tabDataFilters">Datos</span></button>
+        <button class="tab-button" onclick="openTab(event, 'Analisis')"><i class="fas fa-chart-line"></i> <span data-i18n="tabAnalysis">Análisis</span></button>
+    </div>
+
+    <div class="sidebar-widget-shortcuts">
+        <button type="button" id="openLayerWidgetBtn" class="widget-shortcut-btn">
+            <i class="fas fa-layer-group"></i>
+            <span data-i18n="layerPanelTitle">Capas cargadas</span>
+        </button>
+        <button type="button" id="openFilterWidgetBtn" class="widget-shortcut-btn">
+            <i class="fas fa-sliders-h"></i>
+            <span data-i18n="filterControlTitle">Filtros de datos</span>
+        </button>
+        <button type="button" id="openExportWidgetBtn" class="widget-shortcut-btn">
+            <i class="fas fa-file-export"></i>
+            <span data-i18n="exportControlTitle">Exportar datos</span>
+        </button>
+        <button type="button" id="openCompletenessBtn" class="widget-shortcut-btn">
+            <i class="fas fa-tasks"></i>
+            <span data-i18n="sectionCompleteness">Completitud</span>
+        </button>
+    </div>
+
+    <div id="tab-controls">
+        <div id="CargaFiltros" class="tab-content active">
+
+            <div class="control-section" data-section-id="catalog">
+                <div class="section-header-inline">
+                    <h4><i class="fas fa-file-csv section-icon"></i> <span data-i18n="sectionCatalog">Catálogo Sísmico</span></h4>
+                    <i class="fas fa-grip-vertical section-drag-handle"></i>
+                </div>
+                <div class="upload-zone" data-trigger-btn="uploadCSV">
+                    <div class="upload-zone-idle">
+                        <i class="fas fa-file-csv upload-zone-icon"></i>
+                        <p class="upload-zone-text" data-i18n="uploadZoneCsvText">Arrastra tu CSV aquí</p>
+                        <p class="upload-zone-hint" data-i18n="uploadZoneClickHint">o haz clic para seleccionar</p>
+                    </div>
+                    <div class="upload-zone-selected is-hidden">
+                        <i class="fas fa-check-circle upload-zone-check"></i>
+                        <span class="upload-zone-filename"></span>
+                        <button type="button" class="upload-zone-clear" title="Quitar archivo"><i class="fas fa-times"></i></button>
+                    </div>
+                    <input type="file" id="fileInput" accept=".csv" class="upload-zone-input">
+                </div>
+                <button type="button" id="uploadCSV" class="control-btn btn-primary"><i class="fas fa-upload"></i> <span data-i18n="uploadCatalog">Subir Catálogo</span></button>
+            </div>
+
+            <div class="control-section" data-section-id="zones">
+                <div class="section-header-inline">
+                    <h4><i class="fas fa-map section-icon"></i> <span data-i18n="sectionZones">Zonas Sísmicas</span></h4>
+                    <i class="fas fa-grip-vertical section-drag-handle"></i>
+                </div>
+                <div class="upload-zone" data-trigger-btn="uploadSHP">
+                    <div class="upload-zone-idle">
+                        <i class="fas fa-map upload-zone-icon"></i>
+                        <p class="upload-zone-text" data-i18n="uploadZoneZipText">Arrastra tu ZIP aquí</p>
+                        <p class="upload-zone-hint" data-i18n="uploadZoneClickHint">o haz clic para seleccionar</p>
+                    </div>
+                    <div class="upload-zone-selected is-hidden">
+                        <i class="fas fa-check-circle upload-zone-check"></i>
+                        <span class="upload-zone-filename"></span>
+                        <button type="button" class="upload-zone-clear" title="Quitar archivo"><i class="fas fa-times"></i></button>
+                    </div>
+                    <input type="file" id="shpInput" accept=".zip" class="upload-zone-input">
+                </div>
+                <button type="button" id="uploadSHP" class="control-btn btn-primary"><i class="fas fa-map"></i> <span data-i18n="loadZones">Cargar Zonas</span></button>
+
+                <div class="zone-direct-panel">
+                    <div class="zone-direct-title">
+                        <i class="fas fa-location-crosshairs"></i>
+                        <span data-i18n="zoneQuickTitle">Zona de análisis rápida</span>
+                    </div>
+                    <div id="zoneQuickSelector" class="zone-quick-selector">
+                        <p class="zone-empty-hint" data-i18n="zoneEmptyHint">Cargue zonas y selecciónelas aquí o haciendo clic directamente sobre el mapa.</p>
+                    </div>
+                </div>
+
+                <div id="selectedZoneInfo" class="selected-zone-card">
+                    <span class="selected-zone-label" data-i18n="selectedZoneLabel">Zona seleccionada:</span>
+                    <span id="selectedZoneName"></span>
+                    <button type="button" id="clearZoneBtn" class="control-btn zone-clear-btn"><i class="fas fa-ban"></i> <span data-i18n="deselectZone">Deseleccionar zona</span></button>
+                </div>
+            </div>
+
+            <div class="control-section" data-section-id="completeness">
+                <div class="section-header-inline">
+                    <h4><i class="fas fa-tasks section-icon"></i> <span data-i18n="sectionCompleteness">Completitud</span></h4>
+                    <i class="fas fa-grip-vertical section-drag-handle"></i>
+                </div>
+                <div class="upload-zone" data-trigger-btn="uploadCompleteness">
+                    <div class="upload-zone-idle">
+                        <i class="fas fa-table upload-zone-icon"></i>
+                        <p class="upload-zone-text" data-i18n="uploadZoneCsvText">Arrastra tu CSV aquí</p>
+                        <p class="upload-zone-hint" data-i18n="uploadZoneClickHint">o haz clic para seleccionar</p>
+                    </div>
+                    <div class="upload-zone-selected is-hidden">
+                        <i class="fas fa-check-circle upload-zone-check"></i>
+                        <span class="upload-zone-filename"></span>
+                        <button type="button" class="upload-zone-clear" title="Quitar archivo"><i class="fas fa-times"></i></button>
+                    </div>
+                    <input type="file" id="compInput" accept=".csv" class="upload-zone-input">
+                </div>
+                <button type="button" id="uploadCompleteness" class="control-btn btn-primary"><i class="fas fa-table"></i> <span data-i18n="uploadCompleteness">Subir Completitud</span></button>
+            </div>
+
+            <div class="control-section" data-section-id="visualization">
+                <div class="section-header-inline">
+                    <h4><i class="fas fa-eye section-icon"></i> <span data-i18n="visualizationSection">Visualización</span></h4>
+                    <i class="fas fa-grip-vertical section-drag-handle"></i>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="showEllipses">
+                    <label for="showEllipses" data-i18n="showEllipses">Mostrar elipses de error</label>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="Analisis" class="tab-content">
+
+            <div class="control-section" data-section-id="editing">
+                <div class="section-header-inline">
+                    <h4><i class="fas fa-pencil-alt section-icon"></i> <span data-i18n="sectionEditing">Edición</span></h4>
+                    <i class="fas fa-grip-vertical section-drag-handle"></i>
+                </div>
+                <div id="editModeHint" class="field-help" aria-live="polite"></div>
+                <button class="control-btn btn-edit" id="editModeBtn" disabled title="" data-i18n-title="editBtnNoZoneTooltip"><i class="fas fa-pencil-alt"></i> <span data-i18n="enableEditing">Activar Edición</span></button>
+                <div class="edit-actions-row">
+                    <button class="control-btn btn-edit" id="undoMoveBtn" disabled><i class="fas fa-undo"></i> <span data-i18n="undo">Deshacer</span></button>
+                    <label class="trail-toggle-label"><input type="checkbox" id="toggleTrails" checked> <span data-i18n="showTrails">Mostrar trazas</span></label>
+                </div>
+            </div>
+
+            <div class="control-section" data-section-id="richter">
+                <div class="section-header-inline">
+                    <h4><i class="fas fa-chart-line section-icon"></i> <span data-i18n="sectionGR">Gutenberg-Richter</span></h4>
+                    <i class="fas fa-grip-vertical section-drag-handle"></i>
+                </div>
+                <div id="recalcStatus" class="gr-recalc-status" data-i18n="recalcHint">Seleccione una zona para generar automáticamente las curvas G-R y MLE.</div>
+                <div class="gr-chart-card" id="richterWrap">
+                    <div class="gr-topbar">
+                        <div class="gr-mode-pill">
+                            <i class="fas fa-eye"></i>
+                            <select id="richterModeSelect" class="gr-mode-select">
+                                <option value="both" data-i18n="chartModeBoth" selected>Ambas</option>
+                                <option value="gr" data-i18n="chartModeGR">MMCC</option>
+                                <option value="mle" data-i18n="chartModeMLE">Máxima verosimilitud (MV)</option>
+                            </select>
+                        </div>
+                        <button id="expandChartBtn" class="gr-expand-btn" title="Pantalla completa" data-i18n-title="chartFullScreen">
+                            <i class="fas fa-expand"></i>
+                        </button>
+                    </div>
+                    <div class="gr-canvas-wrap">
+                        <canvas id="richterChart"></canvas>
+                    </div>
+                    <div class="chart-narrow-msg">
+                        <i class="fas fa-chart-line"></i>
+                        <p>Amplía el panel para ver la gráfica</p>
+                        <button class="chart-narrow-expand-btn" onclick="document.getElementById('expandChartBtn').click()">
+                            <i class="fas fa-expand"></i> Vista completa
+                        </button>
+                    </div>
+                    <p class="gr-hint" data-i18n="chartHelp">Para salir de la vista completa, presione Escape o ✕</p>
+                </div>
+                <div id="comparative_table"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+# --- Frameworks y Bases de Datos ---
+Django>=5.0
+djangorestframework
+psycopg2-binary
+django-cors-headers
+python-decouple
+whitenoise
+
+# --- Librerías Científicas Esenciales (Fase II: Calculos sismologicos) ---
+# Necesarias para el manejo de datos, el desagrupamiento G&K, Mc (MAXC) y a/b (MLE)
+pandas
+numpy
+scipy
+matplotlib
+geopy
+
+# --- Librerías Geoespaciales (Fase I.3 & Fase III: Elipses y ZFS) ---
+# pyproj es la base de geopandas y necesaria para cálculos geodésicos precisos.
+pyproj
+geopandas
+
+# --- Exportación de documentos ---
+python-docx
+# Opcional: Si usas GeoDjango, descomenta las siguientes líneas:
+# django-rest-framework-gis
+# django-geojson

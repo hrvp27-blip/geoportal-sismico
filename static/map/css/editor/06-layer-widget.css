@@ -1,0 +1,590 @@
+/* ===============================================
+   LEYENDA FLOTANTE
+   =============================================== */
+.legend-floating-control {
+    background: var(--sb-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+    border: 1px solid var(--sb-border);
+}
+
+.legend-title-bar {
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    background: var(--sb-header);
+    border-bottom: 1px solid var(--sb-border);
+    color: var(--sb-accent);
+    transition: background 0.15s ease;
+}
+
+.legend-title-bar:hover {
+    background: var(--sb-hover-overlay);
+}
+
+.legend-floating-content {
+    transition: max-height 0.3s ease-out;
+    max-height: 600px;
+    overflow: hidden;
+}
+
+/* ===============================================
+   LEAFLET ZOOM CONTROL — THEMING
+   =============================================== */
+.leaflet-control-zoom {
+    border: 1px solid var(--sb-border) !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15) !important;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    background: var(--sb-bg) !important;
+    color: var(--sb-text) !important;
+    border-bottom-color: var(--sb-border) !important;
+}
+
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover {
+    background: var(--sb-hover-overlay) !important;
+    color: var(--sb-accent) !important;
+}
+
+/* ===============================================
+   BOTONES DE TOGGLE - WIDGETS FLOTANTES
+   =============================================== */
+.layer-control-custom,
+.filter-control-custom,
+.export-control-custom {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    position: relative;
+    overflow: visible;
+}
+
+.layer-btn-toggle,
+.filter-btn-toggle,
+.export-btn-toggle {
+    width: 30px;
+    height: 30px;
+    background: var(--sb-bg) !important;
+    color: var(--sb-text) !important;
+    border: 1px solid var(--sb-border) !important;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    font-size: 14px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+    text-decoration: none !important;
+    line-height: 1;
+}
+
+.layer-btn-toggle:hover,
+.filter-btn-toggle:hover,
+.export-btn-toggle:hover {
+    background: var(--sb-hover-overlay) !important;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.22);
+    color: var(--sb-text) !important;
+    text-decoration: none !important;
+}
+
+.is-open .layer-btn-toggle,
+.is-open .filter-btn-toggle,
+.is-open .export-btn-toggle {
+    background: var(--sb-inset-bg) !important;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.15);
+}
+
+/* ===============================================
+   PANELES FLOTANTES
+   =============================================== */
+.layer-panel,
+.filter-panel,
+.export-panel {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+    pointer-events: none;
+    position: fixed;
+    top: 60px;
+    left: 50px;
+    background: var(--sb-bg) !important;
+    border-radius: 16px;
+    min-width: 290px;
+    max-width: 330px;
+    box-shadow:
+        0 20px 48px rgba(15, 23, 42, 0.18),
+        0 0 0 1px rgba(148, 163, 184, 0.18);
+    overflow: hidden;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s linear 0.22s;
+    z-index: 1000;
+}
+
+.is-open .layer-panel,
+.is-open .filter-panel,
+.is-open .export-panel {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s linear 0s;
+}
+
+/* Cabecera del panel */
+.widget-panel-header {
+    background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+    color: white;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.widget-panel-header i {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.widget-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.15rem;
+    line-height: 1;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-left: auto;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.15s ease, background 0.15s ease;
+    flex-shrink: 0;
+}
+.widget-close-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+}
+.filter-panel .widget-close-btn,
+.export-panel .widget-close-btn { color: rgba(37, 99, 235, 0.65); }
+.filter-panel .widget-close-btn:hover,
+.export-panel .widget-close-btn:hover {
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.1);
+}
+
+
+/* Cabecera del panel de filtros: fondo de card, texto en acento */
+.filter-panel .widget-panel-header,
+.export-panel .widget-panel-header {
+    background: var(--sb-header);
+    color: var(--sb-accent);
+    border-bottom: 1px solid var(--sb-border);
+}
+
+.filter-panel .widget-panel-header i,
+.export-panel .widget-panel-header i {
+    color: var(--sb-accent);
+    opacity: 1;
+}
+
+/* Cuerpo del panel */
+.widget-panel-body {
+    padding: 14px;
+}
+
+/* ===============================================
+   WIDGET DE CAPAS
+   =============================================== */
+.layer-upload-status {
+    font-size: 0.77rem;
+    color: var(--sb-muted);
+    padding: 0 0 10px;
+    border-bottom: 1px solid var(--sb-border);
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.layer-section-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--sb-muted);
+    margin-bottom: 8px;
+}
+
+.layer-sublist {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 2px;
+}
+
+.layer-sublist:empty {
+    display: none;
+}
+
+/* Ítem de capa */
+.layer-item-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: var(--sb-card);
+    border: 1.5px solid var(--sb-border);
+    transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.layer-item-row:hover {
+    border-color: var(--sb-accent);
+    background: var(--sb-hover-overlay);
+}
+
+.layer-item-row.active {
+    background: var(--sb-hover-overlay);
+    border-color: var(--sb-accent);
+}
+
+/* Punto de tipo de capa */
+.layer-type-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* El color de zona se aplica inline; el box-shadow usa negro semitransparente para cualquier color */
+.layer-type-dot.zone    { box-shadow: 0 0 0 2px rgba(0,0,0,0.15); transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.layer-type-dot.catalog { background: #16a34a; box-shadow: 0 0 0 2px rgba(22,163,74,0.18); }
+
+/* Color picker del dot de zona en el widget de capas */
+.layer-zone-color-label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+.layer-zone-color-label:hover .layer-type-dot {
+    transform: scale(1.5);
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.22);
+}
+
+/* Toggle switch (checkbox disfrazado) */
+.layer-check {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    flex: 1;
+    min-width: 0;
+    user-select: none;
+}
+
+.layer-check span {
+    font-size: 0.81rem;
+    font-weight: 500;
+    color: var(--sb-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.layer-check input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 32px;
+    height: 18px;
+    border-radius: 999px;
+    background: var(--sb-border);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.22s ease;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.layer-check input[type="checkbox"]::after {
+    content: '';
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    background: #ffffff;
+    border-radius: 50%;
+    top: 2.5px;
+    left: 2.5px;
+    transition: transform 0.22s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+.layer-check input[type="checkbox"]:checked {
+    background: var(--sb-accent);
+}
+
+.layer-check input[type="checkbox"]:checked::after {
+    transform: translateX(14px);
+}
+
+/* Botón analizar */
+.layer-select-btn {
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid var(--sb-accent);
+    background: var(--sb-hover-overlay);
+    color: var(--sb-accent);
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.layer-select-btn:hover {
+    background: var(--sb-accent);
+    color: #ffffff;
+    border-color: var(--sb-accent);
+}
+
+.layer-delete-btn {
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid rgba(220, 38, 38, 0.35);
+    background: rgba(220, 38, 38, 0.07);
+    color: #dc2626;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 11px;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.layer-delete-btn:hover {
+    background: #dc2626;
+    color: white;
+    border-color: #dc2626;
+}
+
+/* ===============================================
+   WIDGET DE FILTROS
+   =============================================== */
+.filter-form-widget {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.filter-group {
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--sb-border);
+}
+
+.filter-group:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.filter-group-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--sb-muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.filter-group-label i {
+    color: var(--sb-accent);
+    font-size: 0.78rem;
+    width: 14px;
+    text-align: center;
+}
+
+.filter-range-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-range-row input {
+    flex: 1;
+    padding: 8px 10px;
+    border: 1.5px solid var(--sb-border);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    background: var(--sb-card);
+    color: var(--sb-text);
+    transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    width: 0;
+    min-width: 0;
+    font-family: inherit;
+}
+
+.filter-range-row input:focus {
+    outline: none;
+    border-color: var(--sb-accent);
+    background: var(--sb-bg);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.filter-range-sep {
+    font-size: 0.7rem;
+    color: var(--sb-muted);
+    font-weight: 700;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+/* Toggle para completitud */
+.filter-switch-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px;
+    background: var(--sb-card);
+    border-radius: 10px;
+    border: 1.5px solid var(--sb-border);
+    cursor: pointer;
+    transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.filter-switch-row:hover {
+    border-color: var(--sb-accent);
+    background: var(--sb-hover-overlay);
+}
+
+.filter-switch-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--sb-text);
+    cursor: pointer;
+    flex: 1;
+    user-select: none;
+}
+
+.filter-switch-label i {
+    color: #f59e0b;
+    font-size: 0.85rem;
+}
+
+/* Toggle switch para el checkbox de completitud */
+.filter-switch-row input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 36px;
+    height: 20px;
+    border-radius: 999px;
+    background: var(--sb-border);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.22s ease;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.filter-switch-row input[type="checkbox"]::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ffffff;
+    border-radius: 50%;
+    top: 2.5px;
+    left: 2.5px;
+    transition: transform 0.22s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.filter-switch-row input[type="checkbox"]:checked {
+    background: var(--sb-accent);
+}
+
+.filter-switch-row input[type="checkbox"]:checked::after {
+    transform: translateX(16px);
+}
+
+.filter-completeness-hint {
+    margin: 6px 0 0;
+    font-size: 0.74rem;
+    color: var(--sb-status-text, #92400e);
+    background: var(--sb-status-bg, rgba(245,158,11,0.08));
+    border: 1px solid var(--sb-status-border, rgba(245,158,11,0.22));
+    border-radius: 6px;
+    padding: 5px 9px;
+}
+
+/* ===============================================
+   WIDGET DE EXPORTACIÓN
+   =============================================== */
+.export-widget-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid var(--sb-border);
+    border-radius: 10px;
+    background: var(--sb-card);
+    color: var(--sb-text);
+    font-size: 0.84rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+    text-align: left;
+    font-family: inherit;
+    margin-bottom: 8px;
+}
+
+.export-widget-btn:last-child {
+    margin-bottom: 0;
+}
+
+.export-widget-btn i {
+    font-size: 0.9rem;
+    width: 16px;
+    text-align: center;
+    color: var(--sb-accent);
+    flex-shrink: 0;
+}
+
+.export-widget-btn:hover {
+    background: var(--sb-hover-overlay);
+    border-color: var(--sb-accent);
+    color: var(--sb-accent);
+}
+
+.export-widget-btn:hover i {
+    color: var(--sb-accent);
+}

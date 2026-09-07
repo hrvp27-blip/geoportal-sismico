@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" data-page-title-key="pageTitleMap">
+<head>
+    <meta charset="UTF-8">
+    <title>Geoportal Interactivo de Sismicidad y Zonificación UPM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <!-- Aplica el tema guardado antes del primer pintado para evitar parpadeo -->
+    <script>(function(){var t=localStorage.getItem('gp_theme');if(t&&t!=='light')document.documentElement.setAttribute('data-theme',t);})();</script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="{% static 'map/css/style.css' %}">
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/shpjs@latest/dist/shp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+</head>
+<body>
+<div id="container">
+    {% include 'map/partials/editor/sidebar.html' %}
+    {% include 'map/partials/editor/map_overlays.html' %}
+</div>
+
+{% include 'map/partials/editor/scripts.html' %}
+</body>
+</html>

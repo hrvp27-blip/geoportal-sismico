@@ -1,0 +1,287 @@
+/* =============================================================================
+   00-base.css — Variables, reset, tipografía, navbar, footer
+   Estilo: institucional científico (IGN / EMSC / USGS)
+   ============================================================================= */
+
+/* ── VARIABLES ────────────────────────────────────────────────────────────── */
+:root {
+    /* Paleta principal */
+    --navy:         #1a3557;
+    --navy-dark:    #0d2137;
+    --navy-light:   #274b78;
+    --white:        #ffffff;
+    --off-white:    #f8f7f3;   /* fondo papel */
+    --tinted:       #f2f1ec;   /* secciones alternadas */
+
+    /* Grises */
+    --gray-100:     #eceae4;
+    --gray-200:     #d5d2ca;
+    --gray-400:     #9b9790;
+    --gray-500:     #7a7771;
+    --gray-700:     #4a4540;
+    --text:         #1a1917;
+    --text-muted:   #6b6860;
+
+    /* Acento */
+    --blue:         #1e5799;
+    --blue-hover:   #174b87;
+
+    /* Estado */
+    --req-bg:       #fdf0f0;
+    --req-text:     #9b1c1c;
+    --opt-bg:       #f0f4ff;
+    --opt-text:     #1e3a8a;
+
+    /* Bordes */
+    --border:       #d5d2ca;
+    --border-light: #e8e6e0;
+
+    /* Tipografía */
+    --ff-sans:  'Inter', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    --ff-serif: Georgia, 'Times New Roman', Times, serif;
+    --ff-mono:  'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+    /* Layout */
+    --container-w:  1100px;
+    --section-py:   60px;
+}
+
+/* ── RESET ────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--ff-sans);
+    background-color: var(--off-white);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.page-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* ── CONTENEDOR ───────────────────────────────────────────────────────────── */
+.site-container {
+    width: min(var(--container-w), calc(100% - 40px));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ── BARRA INSTITUCIONAL ──────────────────────────────────────────────────── */
+.inst-bar {
+    background-color: var(--navy-dark);
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.70rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* ── NAVBAR ───────────────────────────────────────────────────────────────── */
+.navbar {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    height: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Marca / Logo */
+.navbar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    margin-right: 24px;
+    flex-shrink: 0;
+}
+
+.brand-mark {
+    width: 26px;
+    height: 26px;
+    background-color: var(--navy);
+    color: var(--white);
+    font-family: var(--ff-sans);
+    font-size: 0.82rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0;
+    /* Solo 2px de radio: serio, no decorativo */
+    border-radius: 2px;
+}
+
+.brand-text {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+
+.brand-upm {
+    color: var(--navy);
+    font-weight: 800;
+}
+
+/* Navegación interna */
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex: 1;
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    height: 50px;
+    padding: 0 14px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-link:hover {
+    color: var(--text);
+    border-bottom-color: var(--navy);
+}
+
+/* Botón CTA navbar */
+.btn-nav {
+    display: inline-flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 15px;
+    margin-left: auto;
+    background-color: var(--navy);
+    color: var(--white) !important;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background-color 0.15s ease;
+}
+
+.btn-nav:hover {
+    background-color: var(--navy-light);
+}
+
+/* ── LANGUAGE SWITCHER (dentro de inst-bar) ───────────────────────────────── */
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lang-flag-btn {
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 1px;
+    padding: 2px;
+    cursor: pointer;
+    line-height: 0;
+    opacity: 0.40;
+    transition: opacity 0.15s ease, border-color 0.15s ease;
+}
+
+.lang-flag-btn .fi {
+    display: block;
+    width: 20px;
+    height: 15px;
+    border-radius: 1px;
+}
+
+.lang-flag-btn:hover {
+    opacity: 0.75;
+}
+
+.lang-flag-btn.lang-flag-active {
+    opacity: 1;
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── FOOTER ───────────────────────────────────────────────────────────────── */
+.site-footer {
+    background-color: var(--navy-dark);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.80rem;
+    border-top: 3px solid var(--navy);
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.footer-brand {
+    color: rgba(255, 255, 255, 0.90);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.01em;
+}
+
+.footer-sub {
+    font-size: 0.73rem;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.02em;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.40);
+    letter-spacing: 0.02em;
+}
+
+.footer-sep {
+    color: rgba(255, 255, 255, 0.20);
+}

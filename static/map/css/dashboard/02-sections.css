@@ -1,0 +1,389 @@
+/* =============================================================================
+   02-sections.css — Secciones de contenido: metodología + especificaciones
+   ============================================================================= */
+
+/* ── SECCIÓN BASE ─────────────────────────────────────────────────────────── */
+.section {
+    padding: var(--section-py) 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.section-white {
+    background-color: var(--white);
+}
+
+.section-tinted {
+    background-color: var(--tinted);
+}
+
+/* ── CABECERA DE SECCIÓN ──────────────────────────────────────────────────── */
+.section-head {
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.section-head h2 {
+    font-family: var(--ff-serif);
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+}
+
+.section-lead {
+    font-size: 0.93rem;
+    color: var(--text-muted);
+    max-width: 680px;
+    line-height: 1.65;
+}
+
+/* ── GRID DE METODOLOGÍA — 1×3 ────────────────────────────────────────────── */
+.method-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+}
+
+/* Cada bloque de método */
+.method-block {
+    padding: 28px 30px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Eliminar bordes del extremo derecho */
+.method-block:nth-child(3n) {
+    border-right: none;
+}
+
+/* Etiqueta de método (G-R, OLS, MLE, MAXC) */
+.method-tag {
+    display: inline-block;
+    font-family: var(--ff-mono);
+    font-size: 0.70rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    background-color: var(--navy);
+    color: var(--white);
+    align-self: flex-start;
+}
+
+/* Nombre del método */
+.method-block h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    line-height: 1.3;
+}
+
+/* Fórmula matemática */
+.method-formula {
+    font-family: var(--ff-serif);
+    font-size: 0.95rem;
+    color: var(--gray-700);
+    background-color: var(--tinted);
+    border-left: 3px solid var(--navy);
+    padding: 7px 12px;
+    line-height: 1.5;
+}
+
+/* Descripción */
+.method-block p:not(.method-formula):not(.method-ref) {
+    font-size: 0.87rem;
+    color: var(--gray-700);
+    line-height: 1.65;
+}
+
+/* Referencia bibliográfica */
+.method-ref {
+    font-size: 0.74rem;
+    color: var(--gray-400);
+    font-style: italic;
+    margin-top: 2px;
+}
+
+/* ── BLOQUES DE ESPECIFICACIÓN ────────────────────────────────────────────── */
+.spec-block {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.spec-block:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* Cabecera del bloque: título + tags */
+.spec-block-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.spec-block-head h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+}
+
+.spec-tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Tag de formato (CSV, ZIP…) */
+.spec-format {
+    font-family: var(--ff-mono);
+    font-size: 0.71rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    background-color: var(--gray-100);
+    padding: 2px 8px;
+    letter-spacing: 0.03em;
+}
+
+/* Badge de estado */
+.spec-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+}
+
+.spec-required {
+    background-color: var(--req-bg);
+    color: var(--req-text);
+}
+
+.spec-optional {
+    background-color: var(--opt-bg);
+    color: var(--opt-text);
+}
+
+/* Descripción del bloque */
+.spec-block > p {
+    font-size: 0.87rem;
+    color: var(--gray-700);
+    line-height: 1.65;
+    margin-bottom: 14px;
+    max-width: 720px;
+}
+
+/* ── TABLA DE ESPECIFICACIONES ────────────────────────────────────────────── */
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+    border: 1px solid var(--border);
+}
+
+.spec-table thead tr {
+    background-color: var(--tinted);
+}
+
+.spec-table th {
+    text-align: left;
+    padding: 9px 14px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border-light);
+    white-space: nowrap;
+}
+
+.spec-table th:last-child {
+    border-right: none;
+}
+
+.spec-table td {
+    padding: 9px 14px;
+    vertical-align: middle;
+    color: var(--gray-700);
+    border-bottom: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-light);
+    line-height: 1.5;
+}
+
+.spec-table td:last-child {
+    border-right: none;
+}
+
+.spec-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.spec-table tbody tr:hover {
+    background-color: var(--gray-100);
+}
+
+/* Nombre de campo — estilo monospace */
+.spec-table code {
+    font-family: var(--ff-mono);
+    font-size: 0.80rem;
+    font-weight: 600;
+    color: var(--navy-dark);
+    background-color: var(--gray-100);
+    padding: 1px 5px;
+}
+
+/* Tipo de dato */
+.td-type {
+    font-family: var(--ff-mono);
+    font-size: 0.77rem;
+    font-weight: 500;
+    color: var(--blue);
+    white-space: nowrap;
+}
+
+/* Estado en celda de tabla */
+.td-req {
+    display: inline-block;
+    font-size: 0.67rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    white-space: nowrap;
+}
+
+.td-required {
+    background-color: var(--req-bg);
+    color: var(--req-text);
+}
+
+.td-optional {
+    background-color: var(--opt-bg);
+    color: var(--opt-text);
+}
+
+/* ── SECCIÓN DE CARACTERÍSTICAS ──────────────────────────────────────────── */
+.feat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+}
+
+.feat-card {
+    padding: 28px 30px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.feat-card:last-child {
+    border-right: none;
+}
+
+.feat-icon-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feat-tag {
+    display: inline-block;
+    font-family: var(--ff-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    background-color: var(--navy);
+    color: var(--white);
+    align-self: flex-start;
+}
+
+.feat-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy-dark);
+    line-height: 1.3;
+}
+
+.feat-card > p {
+    font-size: 0.87rem;
+    color: var(--gray-700);
+    line-height: 1.65;
+}
+
+.feat-note {
+    font-size: 0.78rem !important;
+    color: var(--text-muted) !important;
+    font-style: italic;
+    line-height: 1.5 !important;
+    border-left: 3px solid var(--gray-200);
+    padding-left: 10px;
+}
+
+/* Swatches de tema */
+.theme-swatch-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.theme-swatch {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.swatch-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.theme-swatch-light .swatch-dot {
+    background: #f1f5f9;
+    border: 1.5px solid #94a3b8;
+}
+
+.theme-swatch-dark .swatch-dot {
+    background: #1e293b;
+    border: 1.5px solid #475569;
+}
+
+.theme-swatch-cb .swatch-dot {
+    background: #0077bb;
+    border: 1.5px solid #005588;
+}
+
+/* Lista de features */
+.feat-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.feat-list li {
+    font-size: 0.83rem;
+    color: var(--gray-700);
+    line-height: 1.45;
+}

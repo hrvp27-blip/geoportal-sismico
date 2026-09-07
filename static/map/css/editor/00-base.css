@@ -1,0 +1,129 @@
+/* ===============================================
+   1. RESET Y ESTRUCTURA BASE
+   =============================================== */
+
+/* ── Variables globales y tema Claro (por defecto) ─────────────────────── */
+:root {
+    /* Colores globales de la app */
+    --primary-color:   #0f172a;
+    --secondary-color: #475569;
+    --accent-color:    #3b82f6;
+    --accent-hover:    #2563eb;
+    --text-color:      #1e293b;
+    --text-light:      #64748b;
+    --light-bg:        #f8fafc;
+    --border-color:    #e2e8f0;
+    --success-color:   #10b981;
+    --danger-color:    #ef4444;
+    --warning-color:   #f59e0b;
+
+    /* ── Tema Claro ─────────────────────────────────── */
+    --sb-bg:             #ffffff;
+    --sb-header:         #f1f5f9;
+    --sb-tabs:           #e8eef4;
+    --sb-card:           #f8fafc;
+    --sb-border:         #dde3ec;
+    --sb-text:           #0f172a;
+    --sb-muted:          #64748b;
+    --sb-accent:         #3b82f6;
+    --sb-header-text:    #0f172a;
+    --sb-hover-overlay:  rgba(0, 0, 0, 0.05);
+    --sb-inset-bg:       rgba(0, 0, 0, 0.03);
+    --sb-status-text:    #92400e;
+    --sb-status-bg:      rgba(245, 158, 11, 0.08);
+    --sb-status-border:  rgba(245, 158, 11, 0.22);
+    --sb-zone-label:     #047857;
+    --sb-zone-title:     #1d4ed8;
+    --sb-global-val:     #047857;
+    --sb-lang-border:    rgba(0, 0, 0, 0.28);
+    --sb-toggle-border:  rgba(0, 0, 0, 0.18);
+    --sb-toggle-bg:      rgba(0, 0, 0, 0.06);
+    --sb-canvas-bg:      #ffffff;
+    --sb-chart-grid:     rgba(226, 232, 240, 0.9);
+    --sb-card-border:    #dde3ec;
+}
+
+/* ── Tema Oscuro ────────────────────────────────────────────────────────── */
+html[data-theme="dark"] {
+    --sb-bg:             #1e293b;
+    --sb-header:         #0f172a;
+    --sb-tabs:           #162032;
+    --sb-card:           #243447;
+    --sb-border:         #334155;
+    --sb-text:           #e2e8f0;
+    --sb-muted:          #94a3b8;
+    --sb-accent:         #3b82f6;
+    --sb-header-text:    #f1f5f9;
+    --sb-hover-overlay:  rgba(255, 255, 255, 0.07);
+    --sb-inset-bg:       rgba(0, 0, 0, 0.18);
+    --sb-status-text:    #fbbf24;
+    --sb-status-bg:      rgba(245, 158, 11, 0.1);
+    --sb-status-border:  rgba(245, 158, 11, 0.2);
+    --sb-zone-label:     #6ee7b7;
+    --sb-zone-title:     #bfdbfe;
+    --sb-global-val:     #34d399;
+    --sb-lang-border:    rgba(255, 255, 255, 0.45);
+    --sb-toggle-border:  rgba(255, 255, 255, 0.22);
+    --sb-toggle-bg:      rgba(255, 255, 255, 0.10);
+    --sb-canvas-bg:      #1e293b;
+    --sb-chart-grid:     rgba(148, 163, 184, 0.18);
+    --sb-card-border:    rgba(255, 255, 255, 0.14);
+}
+
+/* ── Tema Daltónico (Okabe-Ito, sin rojo/verde) ────────────────────────── */
+html[data-theme="colorblind"] {
+    --sb-bg:             #fefdf8;
+    --sb-header:         #eeece3;
+    --sb-tabs:           #e3e1d6;
+    --sb-card:           #f5f3ec;
+    --sb-border:         #cac8bc;
+    --sb-text:           #1a1a16;
+    --sb-muted:          #5a5848;
+    --sb-accent:         #0077bb;
+    --sb-header-text:    #1a1a16;
+    --sb-hover-overlay:  rgba(0, 0, 0, 0.05);
+    --sb-inset-bg:       rgba(0, 0, 0, 0.04);
+    --sb-status-text:    #7a3010;
+    --sb-status-bg:      rgba(238, 119, 51, 0.1);
+    --sb-status-border:  rgba(238, 119, 51, 0.22);
+    --sb-zone-label:     #005588;
+    --sb-zone-title:     #004499;
+    --sb-global-val:     #005588;
+    --sb-lang-border:    rgba(0, 0, 0, 0.28);
+    --sb-toggle-border:  rgba(0, 0, 0, 0.18);
+    --sb-toggle-bg:      rgba(0, 0, 0, 0.06);
+    --sb-canvas-bg:      #f5f3ec;
+    --sb-chart-grid:     rgba(90, 88, 72, 0.2);
+    --sb-card-border:    #cac8bc;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--light-bg);
+    color: var(--text-color);
+}
+
+body.chart-fullscreen-open {
+    overflow: hidden;
+}
+
+body.sidebar-resizing {
+    cursor: ew-resize !important;
+}
+
+.is-hidden {
+    display: none !important;
+}
+
+#container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}

@@ -1,0 +1,52 @@
+<section class="hero-section" aria-labelledby="hero-title">
+    <div class="site-container hero-grid">
+
+        <!-- ── Left column: presentation ──────────────────────────── -->
+        <div class="hero-left">
+            <p class="hero-overline" data-i18n="heroOverline">
+                Geoportal de Fuente Sísmica, ETSITGC-UPM, 2026
+            </p>
+
+            <h1 id="hero-title" class="hero-title" data-i18n="heroTitle">
+                Geoportal para el<br>Análisis de Recurrencia Sísmica
+            </h1>
+
+            <p class="hero-body" data-i18n="heroBody">
+                Herramienta para la visualización espacial, edición y análisis estadístico de catálogos sísmicos. Implementa la ley de Gutenberg-Richter con estimación por regresión OLS y máxima verosimilitud, con determinación automática de la magnitud de completitud mediante el método MAXC.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{% url 'map_editor' %}" class="btn btn-primary" data-i18n="heroStartAnalysis">Ir al visor</a>
+            </div>
+        </div>
+
+        <!-- ── Right column: quick reference panel ────────────────── -->
+        <aside class="hero-right" aria-label="Archivos de entrada requeridos">
+            <div class="qref-panel">
+                <div class="qref-header" data-i18n="heroQuickRefTitle">Archivos de entrada</div>
+
+                <div class="qref-row">
+                    <span class="qref-name" data-i18n="heroRefCatalog">Catálogo sísmico</span>
+                    <span class="qref-fmt">CSV/UTF-8</span>
+                    <span class="qref-badge qref-required" data-i18n="requiredBadge">Requerido</span>
+                </div>
+                <div class="qref-row">
+                    <span class="qref-name" data-i18n="heroRefZones">Zonas fuente</span>
+                    <span class="qref-fmt">ZIP/Shapefile</span>
+                    <span class="qref-badge qref-required" data-i18n="requiredBadge">Requerido</span>
+                </div>
+                <div class="qref-row">
+                    <span class="qref-name" data-i18n="heroRefCompleteness">Completitud</span>
+                    <span class="qref-fmt">CSV/tabla Mc</span>
+                    <span class="qref-badge qref-required" data-i18n="requiredBadge">Requerido</span>
+                </div>
+
+                <div class="qref-divider"></div>
+
+                <a href="#especificaciones" class="qref-cta" data-i18n="heroViewSpecs">
+                    Especificaciones <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </aside>
+    </div>
+</section>

@@ -1,0 +1,9 @@
+/* Archivo índice del visor: CSS modular por secciones */
+@import url('./editor/00-base.css');
+@import url('./editor/01-map-shell.css');
+@import url('./editor/02-sidebar.css');
+@import url('./editor/03-overlays.css');
+@import url('./editor/04-controls.css');
+@import url('./editor/05-analysis.css');
+@import url('./editor/06-layer-widget.css');
+@import url('./editor/07-responsive.css');

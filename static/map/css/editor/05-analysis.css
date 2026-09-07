@@ -1,0 +1,336 @@
+/* ===============================================
+   ICONOS DE SISMOS (SVG)
+   =============================================== */
+.custom-div-icon {
+    background: none !important;
+    border: none !important;
+}
+
+.neon-trail {
+    stroke: #ff00ff !important;
+    stroke-width: 4 !important;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 8px rgba(255,0,255,0.9));
+}
+
+/* Popup del mapa */
+.popup-table { font-size: 0.9rem; line-height: 1.4; color: var(--text-color); }
+.popup-table strong { color: var(--primary-color); }
+.popup-table div { margin-bottom: 4px; }
+
+/* Misc helpers */
+.btn-flex { display: flex; gap: 8px; }
+.btn-flex .control-btn { flex: 1; }
+
+/* ── STATUS DE RECÁLCULO ────────────────────────────────────────────────── */
+.gr-recalc-status {
+    font-size: 0.78rem;
+    color: var(--sb-status-text);
+    background: var(--sb-status-bg);
+    border: 1px solid var(--sb-status-border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    line-height: 1.4;
+}
+
+/* ── G-R CHART CARD ─────────────────────────────────────────────────────── */
+.gr-chart-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 1px solid var(--sb-card-border);
+    overflow: hidden;
+    background: var(--sb-card);
+}
+
+.gr-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 12px;
+    background: var(--sb-header);
+    border-bottom: 1px solid var(--sb-border);
+    flex-shrink: 0;
+}
+
+.gr-mode-pill {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex: 1;
+    min-width: 0;
+}
+
+.gr-mode-pill > i {
+    color: #2563eb;
+    font-size: 0.72rem;
+    flex-shrink: 0;
+}
+
+.gr-mode-select {
+    flex: 1;
+    min-width: 0;
+    padding: 5px 8px;
+    border: 1px solid var(--sb-border);
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--sb-text);
+    background: var(--sb-bg);
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.15s ease;
+}
+
+.gr-mode-select:focus {
+    outline: none;
+    border-color: var(--sb-accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.gr-expand-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--sb-border);
+    background: var(--sb-bg);
+    color: var(--sb-muted);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.gr-expand-btn:hover {
+    background: var(--sb-border);
+    border-color: #475569;
+    color: var(--sb-text);
+}
+
+.gr-canvas-wrap {
+    padding: 12px 12px 8px;
+    background: var(--sb-canvas-bg);
+}
+
+.gr-canvas-wrap canvas {
+    width: 100% !important;
+    height: 380px !important;
+    max-height: 380px !important;
+    display: block;
+}
+
+.gr-hint {
+    margin: 0;
+    padding: 5px 12px;
+    font-size: 0.66rem;
+    color: var(--sb-muted);
+    text-align: center;
+    background: var(--sb-header);
+    border-top: 1px solid var(--sb-border);
+    letter-spacing: 0.01em;
+}
+
+/* ── PANEL DEMASIADO ESTRECHO ───────────────────────────────────────────── */
+.chart-narrow-msg {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 32px 16px;
+    text-align: center;
+    color: var(--sb-muted);
+}
+
+.gr-chart-card.chart-collapsed .gr-topbar,
+.gr-chart-card.chart-collapsed .gr-canvas-wrap,
+.gr-chart-card.chart-collapsed .gr-hint {
+    display: none;
+}
+
+.gr-chart-card.chart-collapsed .chart-narrow-msg {
+    display: flex;
+}
+
+.chart-narrow-msg > i {
+    font-size: 2rem;
+    opacity: 0.35;
+}
+
+.chart-narrow-msg > p {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.chart-narrow-expand-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border: 1px solid var(--sb-border);
+    border-radius: 6px;
+    background: none;
+    color: var(--sb-accent);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.chart-narrow-expand-btn:hover {
+    background: var(--sb-accent);
+    color: #fff;
+    border-color: var(--sb-accent);
+}
+
+/* ── FULLSCREEN ─────────────────────────────────────────────────────────── */
+#chart-fullscreen-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.72);
+    backdrop-filter: blur(4px);
+    z-index: 11999;
+}
+
+.gr-chart-card.fullscreen {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(1100px, calc(100vw - 40px));
+    height: min(760px, calc(100vh - 60px));
+    z-index: 12000;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.45);
+    overflow: hidden;
+}
+
+.gr-chart-card.fullscreen .gr-canvas-wrap {
+    flex: 1;
+    padding: 16px;
+    min-height: 0;
+    display: flex;
+    align-items: stretch;
+}
+
+.gr-chart-card.fullscreen .gr-canvas-wrap canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: none !important;
+}
+
+.gr-chart-card.fullscreen .gr-hint {
+    display: none;
+}
+
+.gr-chart-card.fullscreen .chart-narrow-msg {
+    display: none;
+}
+
+.gr-chart-card.fullscreen .gr-topbar {
+    display: flex;
+}
+
+.gr-chart-card.fullscreen .gr-canvas-wrap {
+    display: flex;
+}
+
+/* ── GR STATS ───────────────────────────────────────────────────────────── */
+.gr-stats {
+    margin-top: 4px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--sb-card-border);
+}
+
+.gr-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.gr-stats-table thead th {
+    background: var(--sb-header);
+    color: var(--sb-text);
+    padding: 9px 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-align: left;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.gr-stats-table thead th:not(:first-child) {
+    text-align: center;
+}
+
+.gr-stats-table tbody td {
+    padding: 7px 10px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid var(--sb-border);
+}
+
+.gr-stats-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.gr-stats-table tbody tr:nth-child(even) td {
+    background: var(--sb-card);
+}
+
+.gr-td-label {
+    color: var(--sb-muted);
+    font-weight: 500;
+    font-size: 0.76rem;
+}
+
+.gr-td-val {
+    text-align: center;
+    font-weight: 700;
+    color: var(--sb-text);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Bottom global stats mini-cards */
+.gr-global-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--sb-border);
+}
+
+.gr-global-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 6px;
+    background: var(--sb-header);
+    border-right: 1px solid var(--sb-border);
+    gap: 3px;
+}
+
+.gr-global-card:last-child {
+    border-right: none;
+}
+
+.gr-global-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--sb-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+.gr-global-val {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--sb-global-val);
+    font-variant-numeric: tabular-nums;
+}

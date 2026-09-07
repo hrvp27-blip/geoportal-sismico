@@ -1,0 +1,157 @@
+/* =============================================================================
+   03-responsive.css — Adaptaciones para pantallas medianas y pequeñas
+   ============================================================================= */
+
+/* ── Pantallas medianas (< 960px) ─────────────────────────────────────────── */
+@media (max-width: 960px) {
+    :root {
+        --section-py: 44px;
+    }
+
+    /* Hero: pasar a columna única */
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    /* Panel de referencia rápida: ancho completo */
+    .hero-right {
+        max-width: 480px;
+    }
+
+    /* Características: 1 columna */
+    .feat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feat-card {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .feat-card:last-child {
+        border-bottom: none;
+    }
+
+    /* Metodología: 1 columna */
+    .method-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .method-block {
+        border-right: none;
+    }
+
+    .method-block:nth-child(2n) {
+        border-right: none;
+    }
+
+    .method-block:nth-child(n+3) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .method-block:last-child {
+        border-bottom: none;
+    }
+
+    /* Título hero más pequeño */
+    .hero-title {
+        font-size: 1.85rem;
+    }
+}
+
+/* ── Pantallas pequeñas (< 720px) ─────────────────────────────────────────── */
+@media (max-width: 720px) {
+    :root {
+        --section-py: 36px;
+    }
+
+    /* Inst bar: solo texto corto */
+    .inst-bar-text {
+        font-size: 0.65rem;
+        letter-spacing: 0.03em;
+    }
+
+    /* Navbar: ocultar links internos */
+    .navbar-links {
+        display: none;
+    }
+
+    /* Hero compacto */
+    .hero-section {
+        padding: 36px 0 32px;
+    }
+
+    .hero-title {
+        font-size: 1.65rem;
+    }
+
+    /* Botones en columna */
+    .hero-cta-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Panel quick-ref: texto reducido */
+    .qref-row {
+        grid-template-columns: 1fr auto;
+        gap: 6px;
+    }
+
+    .qref-fmt {
+        display: none;
+    }
+
+    /* Tabla de especificaciones: scroll horizontal */
+    .spec-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Cabecera de specs: columna */
+    .spec-block-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .section-head h2 {
+        font-size: 1.25rem;
+    }
+
+    /* Footer: columna */
+    .footer-inner {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-right {
+        font-size: 0.70rem;
+    }
+}
+
+/* ── Pantallas muy pequeñas (< 480px) ────────────────────────────────────── */
+@media (max-width: 480px) {
+    .inst-bar {
+        padding: 5px 12px;
+    }
+
+    .navbar {
+        padding: 0 12px;
+    }
+
+    .hero-section {
+        padding: 28px 0 24px;
+    }
+
+    .site-container {
+        width: calc(100% - 24px);
+    }
+}

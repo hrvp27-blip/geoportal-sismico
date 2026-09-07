@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(& \"c:\\\\TFG\\\\TFG_Plataforma\\\\venv_new\\\\Scripts\\\\python.exe\" manage.py collectstatic --noinput)",
+      "PowerShell(& \"c:\\\\TFG\\\\TFG_Plataforma\\\\venv_new\\\\Scripts\\\\python.exe\" -c \"import django; print\\(django.get_version\\(\\)\\)\")",
+      "PowerShell(& \"c:\\\\TFG\\\\TFG_Plataforma\\\\venv_new\\\\Scripts\\\\python.exe\" manage.py collectstatic --noinput --clear -v 2 2>&1)",
+      "PowerShell(& \"c:\\\\TFG\\\\TFG_Plataforma\\\\venv_new\\\\Scripts\\\\python.exe\" manage.py runserver 8000 --noreload)",
+      "PowerShell(Start-Sleep -Seconds 2; try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:8000/\" -UseBasicParsing; $r.StatusCode } catch { $_.Exception.Message })",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:8000/editor/\" -UseBasicParsing; \"STATUS: $\\($r.StatusCode\\)\"; $r.Content.Substring\\(0,300\\) } catch { $_.Exception.Message; if \\($_.Exception.Response\\) { $stream = $_.Exception.Response.GetResponseStream\\(\\); $reader = New-Object System.IO.StreamReader\\($stream\\); $reader.ReadToEnd\\(\\) | Select-Object -First 1 } })",
+      "PowerShell(try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:8000/static/js/map-render.js\" -UseBasicParsing; $r.Content -match \"Redibujar las elipses ya\" } catch { $_.Exception.Message })",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://127.0.0.1:8000/editor/\" -UseBasicParsing; $r.Content -match 'section-chip')",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://127.0.0.1:8000/editor/?_=$\\(Get-Random\\)\" -UseBasicParsing; $r.Content -match 'section-chip\">CSV')",
+      "PowerShell(try { Invoke-WebRequest -Uri \"http://127.0.0.1:8000/this-page-does-not-exist/\" -UseBasicParsing } catch { $_.Exception.Response.StatusCode; $stream = $_.Exception.Response.GetResponseStream\\(\\); $reader = New-Object System.IO.StreamReader\\($stream\\); $body = $reader.ReadToEnd\\(\\); $body.Substring\\(0, [Math]::Min\\(500,$body.Length\\)\\) })"
+    ]
+  }
+}

@@ -1,0 +1,182 @@
+<section id="especificaciones" class="section section-tinted" aria-labelledby="specs-heading">
+    <div class="site-container">
+
+        <div class="section-head">
+            <h2 id="specs-heading" data-i18n="specsTitle">Especificaciones de entrada</h2>
+            <p class="section-lead" data-i18n="specsLead">
+                Formatos de archivo aceptados por el visor. Los archivos marcados como requeridos deben estar presentes para que la plataforma funcione correctamente.
+            </p>
+        </div>
+
+        <!-- ── Catálogo CSV ────────────────────────────────────────── -->
+        <div class="spec-block">
+            <div class="spec-block-head">
+                <h3 data-i18n="catalogTitle">Catálogo Sísmico</h3>
+                <div class="spec-tags">
+                    <span class="spec-format">CSV/UTF-8</span>
+                    <span class="spec-badge spec-required" data-i18n="requiredBadge">Requerido</span>
+                </div>
+            </div>
+            <p data-i18n="catalogBody">
+                Archivo de texto delimitado por comas. La primera fila debe ser una cabecera con los nombres de campo exactos indicados en la tabla. La codificación debe ser UTF-8.
+            </p>
+            <table class="spec-table">
+                <thead>
+                    <tr>
+                        <th data-i18n="fieldHeader">Campo</th>
+                        <th data-i18n="fieldType">Tipo</th>
+                        <th data-i18n="fieldRequired">Estado</th>
+                        <th data-i18n="fieldDescription">Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>date</code></td>
+                        <td class="td-type">string</td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="fieldDateDesc">Fecha y hora del evento (AAAA-MM-DD HH:MM:SS)</td>
+                    </tr>
+                    <tr>
+                        <td><code>lat</code> / <code>latitude</code></td>
+                        <td class="td-type">float</td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="fieldLatDesc">Latitud decimal WGS84, rango −90° a 90°</td>
+                    </tr>
+                    <tr>
+                        <td><code>lon</code> / <code>longitude</code></td>
+                        <td class="td-type">float</td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="fieldLonDesc">Longitud decimal WGS84, rango −180° a 180°</td>
+                    </tr>
+                    <tr>
+                        <td><code>mw</code> / <code>magnitude</code></td>
+                        <td class="td-type">float</td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="fieldMwDesc">Magnitud momento Mw</td>
+                    </tr>
+                    <tr>
+                        <td><code>depth</code></td>
+                        <td class="td-type">float</td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="fieldDepthDesc">Profundidad focal en kilómetros</td>
+                    </tr>
+                    <tr>
+                        <td><code>smajax*</code></td>
+                        <td class="td-type">float</td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="fieldSmajaxDesc">Semieje mayor de la elipse de error de localización (km)</td>
+                    </tr>
+                    <tr>
+                        <td><code>sminax*</code></td>
+                        <td class="td-type">float</td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="fieldSminaxDesc">Semieje menor de la elipse de error de localización (km)</td>
+                    </tr>
+                    <tr>
+                        <td><code>strike*</code></td>
+                        <td class="td-type">float</td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="fieldStrikeDesc">Azimut del semieje mayor de la elipse de error (grados)</td>
+                    </tr>
+                    <tr>
+                        <td><code>eventid</code></td>
+                        <td class="td-type">string</td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="fieldEventIdDesc">Identificador único del evento</td>
+                    </tr>
+                    <tr>
+                        <td><code>is_main_shock</code></td>
+                        <td class="td-type">boolean</td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="fieldIsMainShockDesc">Indica si es el choque principal: true/false (por defecto true si se omite)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="spec-note" style="margin-top:0.6rem;padding:0.6rem 1rem;background:#f8fafc;border-left:4px solid #c7e0f4;border-radius:4px;">
+                <p data-i18n="ellipseFieldsNote">*Nota: Si no dispone de los campos <code>smajax</code>, <code>sminax</code> o <code>strike</code>, indique 0 en esos campos para que el visor utilice los valores por defecto.</p>
+            </div>
+        </div>
+
+        <!-- ── Zonas Fuente SHP ───────────────────────────────────── -->
+        <div class="spec-block">
+            <div class="spec-block-head">
+                <h3 data-i18n="sourceTitle">Zonas Fuente Sísmica</h3>
+                <div class="spec-tags">
+                    <span class="spec-format">ZIP/Shapefile</span>
+                    <span class="spec-badge spec-required" data-i18n="requiredBadge">Requerido</span>
+                </div>
+            </div>
+            <p data-i18n="sourceBody">
+                Archivo ZIP que contiene un Shapefile con los polígonos de las zonas fuente. Se admiten geometrías de tipo <code>Polygon</code> y <code>MultiPolygon</code>. Se recomienda proyección WGS84 (EPSG:4326).
+            </p>
+            <table class="spec-table">
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th data-i18n="fieldRequired">Estado</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>.shp</code></td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="shpGeomDesc">Geometría vectorial de los polígonos de zona fuente</td>
+                    </tr>
+                    <tr>
+                        <td><code>.shx</code></td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="shxDesc">Índice de posición de geometría</td>
+                    </tr>
+                    <tr>
+                        <td><code>.dbf</code></td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="dbfDesc">Tabla de atributos alfanuméricos (nombre, código de zona…)</td>
+                    </tr>
+                    <tr>
+                        <td><code>.prj</code></td>
+                        <td><span class="td-req td-required" data-i18n="requiredBadge">Requerido</span></td>
+                        <td data-i18n="prjDesc">Definición de la proyección cartográfica</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ── Matriz de Completitud ──────────────────────────────── -->
+        <div class="spec-block">
+            <div class="spec-block-head">
+                <h3 data-i18n="completenessTitle">Matriz de Completitud</h3>
+                <div class="spec-tags">
+                    <span class="spec-format">CSV/UTF-8</span>
+                    <span class="spec-badge spec-required" data-i18n="requiredBadge">Requerido</span>
+                </div>
+            </div>
+            <p data-i18n="completenessBody">
+                Define los años de completitud en que el catálogo se considera completo para cada umbral de magnitud. El visor filtra automáticamente los eventos que no cumplen el criterio de completitud correspondiente a su año. Si no se proporciona, M<sub>c</sub> se determina automáticamente por MAXC.
+            </p>
+            <table class="spec-table">
+                <thead>
+                    <tr>
+                        <th data-i18n="completenessYear">Año de completitud</th>
+                        <th>M<sub>c</sub></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1900</td>
+                        <td>5.0</td>
+                    </tr>
+                    <tr>
+                        <td>1960</td>
+                        <td>3.5</td>
+                    </tr>
+                    <tr>
+                        <td>2000</td>
+                        <td>2.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>

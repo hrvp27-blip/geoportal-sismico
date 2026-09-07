@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sourceModel name="EjemploFuente">
+    <simpleFaultSource>
+        <name>FallaEjemplo</name>
+        <trt>FLT</trt>
+        <tectonicRegion>Active Shallow Crust</tectonicRegion>
+        <mfd>
+            <type>truncatedGutenbergRichter</type>
+            <aValue>4.5</aValue>
+            <bValue>1.0</bValue>
+            <minMag>5.0</minMag>
+            <maxMag>7.0</maxMag>
+        </mfd>
+        <geometry>
+            <dip>90.0</dip>
+            <rake>0.0</rake>
+            <length>20.0</length>
+            <width>10.0</width>
+            <depthTop>5.0</depthTop>
+            <depthBottom>15.0</depthBottom>
+            <strike>0.0</strike>
+            <trace>
+                <point lat="37.0" lon="-122.0"/>
+                <point lat="37.1" lon="-122.1"/>
+            </trace>
+        </geometry>
+    </simpleFaultSource>
+</sourceModel>

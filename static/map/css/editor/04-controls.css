@@ -1,0 +1,571 @@
+/* ===============================================
+   6. COMPONENTES INTERNOS (BOTONES E INPUTS)
+   =============================================== */
+.control-section {
+    background: var(--sb-card);
+    padding: 14px;
+    margin-bottom: 14px;
+    border-radius: 10px;
+    border: 1px solid var(--sb-card-border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.control-section h4 {
+    margin: 0;
+    font-size: 0.93rem;
+    color: var(--sb-text);
+    padding-bottom: 0;
+    font-weight: 700;
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.section-icon {
+    font-size: 0.78rem;
+    opacity: 0.5;
+    flex-shrink: 0;
+}
+
+.control-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.87rem;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.18s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.control-btn:hover { transform: translateY(-1px); }
+.control-btn:active { transform: translateY(0); }
+
+.btn-primary { background: var(--accent-color); }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-danger { background: #dc2626; }
+.btn-danger:hover { background: #b91c1c; }
+.btn-edit { background: var(--warning-color); color: #fff; }
+.btn-edit:hover { background: #d97706; }
+.btn-edit:disabled { background: #334155; color: #64748b; cursor: not-allowed; box-shadow: none; transform: none; opacity: 0.6; }
+.btn-export { background: var(--success-color); }
+.btn-export:hover { background: #059669; }
+.btn-warning { background: var(--warning-color); color: white; }
+
+.dashboard-section {
+    position: relative;
+}
+
+.section-header-inline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 4px;
+    cursor: grab;
+    user-select: none;
+}
+
+.section-header-inline:active {
+    cursor: grabbing;
+}
+
+.section-drag-handle {
+    color: var(--sb-muted);
+    opacity: 0.3;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    transition: opacity 0.15s;
+}
+
+.section-header-inline:hover .section-drag-handle {
+    opacity: 0.65;
+}
+
+.section-drag-ghost {
+    opacity: 0.35;
+    border-radius: 10px;
+    background: var(--sb-card);
+    border: 2px dashed var(--sb-accent) !important;
+}
+
+.section-drag-chosen {
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+    border-color: var(--sb-accent) !important;
+}
+
+.section-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--sb-muted);
+    background: var(--sb-border);
+}
+
+.section-chip-accent {
+    background: rgba(59, 130, 246, 0.12);
+    color: var(--sb-zone-title);
+}
+
+.field-help {
+    font-size: 0.77rem;
+    color: var(--sb-muted);
+    line-height: 1.45;
+}
+
+.zone-direct-panel {
+    margin-top: 8px;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(59, 130, 246, 0.07);
+    border: 1px solid rgba(59, 130, 246, 0.18);
+}
+
+.zone-direct-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--sb-zone-title);
+}
+
+.zone-quick-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ── Zone groups ── */
+.zone-group {
+    border-radius: 8px;
+    border: 1.5px solid var(--sb-card-border);
+    overflow: hidden;
+    transition: border-color 0.18s ease;
+}
+
+.zone-group:hover {
+    border-color: var(--zone-color, #475569);
+}
+
+.zone-group-header {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 10px;
+    background: var(--sb-card);
+}
+
+.zone-group-color-label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+.zone-group-color-label:hover .zone-group-dot {
+    transform: scale(1.35);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+}
+
+.zone-group-color-input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.zone-group-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.12);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.zone-group-name {
+    flex: 1;
+    font-size: 0.79rem;
+    font-weight: 700;
+    color: var(--sb-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.zone-group-count {
+    font-size: 0.68rem;
+    color: var(--sb-muted);
+    font-weight: 600;
+    background: var(--sb-border);
+    border-radius: 999px;
+    padding: 1px 7px;
+    flex-shrink: 0;
+}
+
+.zone-group-delete-btn {
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid rgba(239, 68, 68, 0.35);
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 9px;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    flex-shrink: 0;
+    padding: 0;
+    margin-left: 2px;
+}
+
+.zone-group-delete-btn:hover {
+    background: #dc2626;
+    color: white;
+    border-color: #dc2626;
+}
+
+.zone-group-features {
+    padding: 8px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    background: var(--sb-inset-bg);
+    border-top: 1px solid var(--sb-border);
+}
+
+/* Feature pill buttons */
+.zone-feature-btn {
+    border: 1.5px solid var(--zone-color, #3b82f6);
+    color: var(--zone-color, #3b82f6);
+    background: transparent;
+    border-radius: 999px;
+    padding: 5px 11px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    max-width: 100%;
+}
+
+.zone-feature-btn i {
+    flex-shrink: 0;
+    font-size: 0.68rem;
+}
+
+.zone-feature-btn span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.zone-feature-btn:hover {
+    background: var(--sb-hover-overlay);
+    transform: translateY(-1px);
+}
+
+.zone-feature-btn.active {
+    background: var(--zone-color, #3b82f6);
+    color: white;
+    border-color: var(--zone-color, #3b82f6);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.zone-empty-hint {
+    margin: 0;
+    font-size: 0.79rem;
+    color: var(--sb-muted);
+    line-height: 1.45;
+}
+
+.selected-zone-card {
+    display: none;
+    margin-top: 10px;
+    padding: 12px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.22);
+    border-radius: 10px;
+}
+
+.selected-zone-card.is-visible {
+    display: block;
+}
+
+.selected-zone-label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 700;
+    color: var(--sb-zone-label);
+}
+
+#selectedZoneName {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--sb-zone-title);
+    word-break: break-word;
+}
+
+@keyframes zone-clear-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.55); }
+    50%       { box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); }
+}
+
+.zone-clear-btn {
+    margin-top: 8px;
+    width: 100%;
+    background: #dc2626;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 11px 15px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.22);
+    box-shadow: 0 3px 12px rgba(220, 38, 38, 0.45);
+    animation: zone-clear-pulse 1.8s ease-in-out infinite;
+    transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+}
+
+.zone-clear-btn:hover {
+    background: #b91c1c;
+    box-shadow: 0 4px 18px rgba(220, 38, 38, 0.65);
+    animation: none;
+    transform: translateY(-1px);
+}
+
+.zone-clear-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(220, 38, 38, 0.4);
+}
+
+.edit-actions-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.trail-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 6px;
+}
+
+.export-btns {
+    margin-top: 8px;
+}
+
+.chart-mode-controls {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.chart-mode-label {
+    font-size: 12px;
+    margin-right: 4px;
+}
+
+.chart-mode-select {
+    font-size: 12px;
+    padding: 4px;
+}
+
+#geoportal-logo.is-hidden {
+    display: none;
+}
+
+/* Inputs dentro del sidebar */
+.control-section input[type="number"],
+.control-section input[type="date"] {
+    width: 100%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--sb-border);
+    border-radius: 6px;
+    font-size: 0.87rem;
+    background: var(--sb-bg);
+    color: var(--sb-text);
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.control-section input[type="number"]:focus,
+.control-section input[type="date"]:focus {
+    outline: none;
+    border-color: var(--sb-accent);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* ── Drop zone de carga de archivos ─────────────────────────────────── */
+.upload-zone {
+    position: relative;
+    border: 2px dashed var(--sb-border);
+    border-radius: 8px;
+    padding: 18px 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 82px;
+    text-align: center;
+    transition: border-color 0.18s ease, background 0.18s ease;
+    overflow: hidden;
+}
+
+.upload-zone:hover {
+    border-color: var(--sb-accent);
+    background: rgba(59, 130, 246, 0.04);
+}
+
+.upload-zone.is-drag-over {
+    border-color: var(--sb-accent);
+    border-style: solid;
+    background: rgba(59, 130, 246, 0.08);
+}
+
+.upload-zone.has-file {
+    border-style: solid;
+    border-color: var(--sb-accent);
+    background: rgba(59, 130, 246, 0.04);
+    cursor: default;
+}
+
+/* El input real: cubre todo el área para capturar clics, invisible */
+.upload-zone-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    font-size: 0;
+}
+
+.upload-zone.has-file .upload-zone-input {
+    pointer-events: none;
+}
+
+/* Estado inicial (idle) */
+.upload-zone-idle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.upload-zone-icon {
+    font-size: 1.35rem;
+    color: var(--sb-muted);
+    line-height: 1;
+}
+
+.upload-zone-text {
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--sb-text);
+    margin: 0;
+}
+
+.upload-zone-hint {
+    font-size: 0.73rem;
+    color: var(--sb-muted);
+    margin: 0;
+}
+
+/* Estado con archivo seleccionado */
+.upload-zone-selected {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+}
+
+.upload-zone-check {
+    color: var(--success-color);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.upload-zone-filename {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.81rem;
+    font-weight: 600;
+    color: var(--sb-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+}
+
+.upload-zone-clear {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--sb-border);
+    background: var(--sb-bg);
+    color: var(--sb-muted);
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+    padding: 0;
+}
+
+.upload-zone-clear:hover {
+    background: var(--danger-color);
+    color: #fff;
+    border-color: var(--danger-color);
+}
+
+/* Botón de carga deshabilitado hasta tener archivo */
+.control-btn.btn-disabled,
+.control-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none !important;
+    pointer-events: none;
+}
+
+#tab-controls label {
+    font-size: 0.83rem;
+    font-weight: 500;
+    color: var(--sb-text);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

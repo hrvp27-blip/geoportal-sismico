@@ -1,0 +1,210 @@
+/* =============================================================================
+   01-hero.css — Sección de presentación (hero)
+   ============================================================================= */
+
+/* ── CONTENEDOR ───────────────────────────────────────────────────────────── */
+.hero-section {
+    background-color: var(--off-white);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 0 52px;
+}
+
+/* Línea de acento superior: señal visual de "entrada al contenido" */
+.hero-section::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--navy);
+    margin-bottom: 0;
+}
+
+/* ── GRID: 3/5 izquierda + 2/5 derecha ──────────────────────────────────── */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 48px;
+    align-items: start;
+}
+
+/* ── COLUMNA IZQUIERDA ────────────────────────────────────────────────────── */
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Línea de contexto académico */
+.hero-overline {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 16px;
+}
+
+/* Título principal — serif para autoridad académica */
+.hero-title {
+    font-family: var(--ff-serif);
+    font-size: clamp(2.0rem, 3.5vw, 2.9rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--navy-dark);
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+}
+
+/* Descripción */
+.hero-body {
+    font-size: 0.97rem;
+    line-height: 1.70;
+    color: var(--gray-700);
+    max-width: 600px;
+    margin-bottom: 28px;
+}
+
+/* ── BOTONES ──────────────────────────────────────────────────────────────── */
+.hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 22px;
+    background-color: var(--navy);
+    color: var(--white);
+    font-size: 0.87rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 2px;
+    white-space: nowrap;
+    transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--navy-light);
+}
+
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 18px;
+    background-color: transparent;
+    color: var(--navy);
+    font-size: 0.87rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-ghost:hover {
+    background-color: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+/* ── COLUMNA DERECHA — Panel de referencia rápida ────────────────────────── */
+.hero-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.qref-panel {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--navy);
+    padding: 0;
+}
+
+.qref-header {
+    padding: 12px 18px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-light);
+    background-color: var(--tinted);
+}
+
+.qref-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 18px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.84rem;
+}
+
+.qref-row:last-of-type {
+    border-bottom: none;
+}
+
+.qref-name {
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+.qref-fmt {
+    font-family: var(--ff-mono);
+    font-size: 0.73rem;
+    color: var(--gray-500);
+    background-color: var(--gray-100);
+    padding: 2px 6px;
+    white-space: nowrap;
+}
+
+/* Badges de estado en el panel */
+.qref-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    white-space: nowrap;
+}
+
+.qref-required {
+    background-color: var(--req-bg);
+    color: var(--req-text);
+}
+
+.qref-optional {
+    background-color: var(--opt-bg);
+    color: var(--opt-text);
+}
+
+.qref-divider {
+    height: 1px;
+    background-color: var(--border);
+}
+
+/* Enlace de acceso dentro del panel */
+.qref-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 13px 18px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--navy);
+    text-decoration: none;
+    background-color: var(--tinted);
+    transition: background-color 0.15s ease;
+}
+
+.qref-cta:hover {
+    background-color: var(--gray-100);
+}

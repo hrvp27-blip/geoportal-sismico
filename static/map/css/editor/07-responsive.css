@@ -1,0 +1,115 @@
+@media (max-width: 1100px) {
+    .map-title-card {
+        max-width: calc(100vw - 420px);
+    }
+}
+
+/* Sidebar recogido hacia la izquierda mediante clip-path */
+#sidebar.is-collapsed {
+    clip-path: inset(0 100% 0 0);
+    pointer-events: none;
+    box-shadow: none;
+    opacity: 0;
+}
+
+/* Pestaña de reapertura del sidebar */
+#sidebar-reopen-tab {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(100%);
+    width: 44px;
+    padding: 20px 0;
+    background: linear-gradient(180deg, #0f172a 0%, #2563eb 100%);
+    border: none;
+    border-radius: 14px 0 0 14px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    cursor: pointer;
+    z-index: 1001;
+    box-shadow: -4px 0 20px rgba(15, 23, 42, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.18s ease;
+}
+
+#sidebar-reopen-tab i {
+    font-size: 1rem;
+}
+
+#sidebar-reopen-tab:hover {
+    background: linear-gradient(180deg, #1e293b 0%, #3b82f6 100%);
+}
+
+#sidebar-reopen-tab.is-visible {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.map-title-card.is-collapsed {
+    max-height: 82px;
+    padding: 14px 18px;
+    overflow: hidden;
+}
+
+.map-title-card.is-collapsed .map-title-eyebrow,
+.map-title-card.is-collapsed .map-title-badges {
+    display: none;
+}
+
+.map-title-card.is-collapsed h1 {
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.map-title-card.is-collapsed .floating-panel-body {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.map-hint-card.is-collapsed {
+    padding: 10px 40px 10px 14px;
+    width: auto;
+    max-width: 240px;
+    overflow: hidden;
+}
+
+.map-hint-card.is-collapsed .hint-card-content span {
+    display: none;
+}
+
+@media (max-width: 860px) {
+    .map-title-card {
+        top: 72px;
+        left: 12px;
+        right: 12px;
+        max-width: unset;
+    }
+
+    .map-hint-card {
+        top: 224px;
+        left: 12px;
+        right: 12px;
+        width: fit-content;
+        max-width: calc(100vw - 24px);
+    }
+
+    #sidebar {
+        left: 10px;
+        right: 10px;
+        width: auto;
+        min-width: unset;
+    }
+}

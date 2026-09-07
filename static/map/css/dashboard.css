@@ -1,0 +1,5 @@
+/* Archivo índice del dashboard — importa los módulos en orden */
+@import url('./dashboard/00-base.css');
+@import url('./dashboard/01-hero.css');
+@import url('./dashboard/02-sections.css');
+@import url('./dashboard/03-responsive.css');

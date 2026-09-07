@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" data-page-title-key="pageTitleDashboard">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geoportal de Fuente Sísmica | Geoportal para el Análisis de Recurrencia Sísmica</title>
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
+    <link rel="stylesheet" href="{% static 'map/css/dashboard.css' %}">
+</head>
+<body>
+    <div class="page-shell">
+        {% include 'map/partials/dashboard/navbar.html' %}
+
+        <main>
+            {% include 'map/partials/dashboard/hero.html' %}
+            {% include 'map/partials/dashboard/features.html' %}
+            {% include 'map/partials/dashboard/data-reference.html' %}
+            {% include 'map/partials/dashboard/methodology.html' %}
+        </main>
+
+        {% include 'map/partials/dashboard/footer.html' %}
+    </div>
+    <script src="{% static 'js/language.js' %}"></script>
+</body>
+</html>

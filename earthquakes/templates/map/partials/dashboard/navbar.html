@@ -1,0 +1,28 @@
+<div class="inst-bar">
+    <div>
+        <span class="inst-bar-text">ETSITGC, Universidad Politécnica de Madrid, Trabajo Fin de Titulación</span>
+        <span class="inst-bar-subtext">Hristiyana Petkova - TIG</span>
+    </div>
+    <div class="lang-switcher" role="group" aria-label="Language / Idioma">
+        <button type="button" class="lang-flag-btn" data-lang="es" title="Español" aria-label="Cambiar a Español">
+            <span class="fi fi-es fis"></span>
+        </button>
+        <button type="button" class="lang-flag-btn" data-lang="en" title="English" aria-label="Switch to English">
+            <span class="fi fi-gb fis"></span>
+        </button>
+    </div>
+</div>
+
+<nav class="navbar" aria-label="Navegación principal">
+    <a href="{% url 'dashboard' %}" class="navbar-brand" aria-label="Inicio — Geoportal de Fuente Sísmica">
+        <span class="brand-mark" aria-hidden="true">G</span>
+        <span class="brand-text">Geoportal de Fuente <strong class="brand-upm">Sísmica</strong></span>
+    </a>
+
+    <div class="navbar-links">
+        <a href="#metodologia" class="nav-link" data-i18n="navMethodology">Metodología</a>
+        <a href="#especificaciones" class="nav-link" data-i18n="navSpecs">Especificaciones</a>
+    </div>
+
+    <a href="{% url 'map_editor' %}" class="btn-nav" data-i18n="navbarOpenViewer">Abrir visor</a>
+</nav>
